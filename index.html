@@ -1,1011 +1,280 @@
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HACKER.RU - Кибербезопасность и Информационная Безопасность</title>
-    <link rel="preconnect" href="https://fonts.fontsource.org">
-    <link href="https://fonts.fontsource.org/files/jetbrains-mono/cyrillic-400-normal.css" rel="stylesheet">
-    <link href="https://fonts.fontsource.org/files/jetbrains-mono/cyrillic-700-normal.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00ff88;
-            --secondary: #00ccff;
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --text-primary: #ffffff;
-            --text-secondary: #888899;
-            --accent: #ff0066;
-        }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 6px;
-            font-family: inherit;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--bg-dark);
-        }
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            position: relative;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding-right: 50px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .terminal {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .terminal-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .terminal-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .terminal-dot.red { background: #ff5f56; }
-        .terminal-dot.yellow { background: #ffbd2e; }
-        .terminal-dot.green { background: #27ca40; }
-
-        .terminal-body {
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .terminal-line {
-            margin-bottom: 5px;
-        }
-
-        .terminal-prompt {
-            color: var(--primary);
-        }
-
-        .terminal-command {
-            color: var(--text-primary);
-        }
-
-        .terminal-output {
-            color: var(--text-secondary);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 18px;
-            background: var(--primary);
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: var(--bg-card);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .section-title h2 span {
-            color: var(--primary);
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--bg-dark);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: /* Stats Section */
-        .stats {
-            padding: 80px 0;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 255, 0.05));
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            color: var(--text-secondary);
-            font-size: 16px;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-
-        .service-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .service-card ul {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .service-card li {
-            padding: 8px 0;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .service-card li::before {
-            content: '✓';
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: var(--bg-card);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-info h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: var(--primary);
-        }
-
-        .contact-form {
-            background: var(--bg-dark);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 255, 136, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 0 30px;
-            background: var(--bg-dark);
-            border-top: 1px solid rgba(0, 255, 136, 0.1);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 120px;
-            }
-
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 50px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .terminal {
-                max-width: 100%;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HACKER.RU - Кибербезопасность</title>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+--primary:#00ff88;
+--secondary:#00ccff;
+--bg-dark:#0a0a0f;
+--bg-card:#12121a;
+--text-primary:#fff;
+--text-secondary:#888899;
+}
+
+body{
+font-family:'JetBrains Mono',monospace;
+background:var(--bg-dark);
+color:var(--text-primary);
+overflow-x:hidden;
+line-height:1.6;
+}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+header{
+padding:20px 0;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+background:rgba(10,10,15,0.95);
+border-bottom:1px solid rgba(0,255,136,0.1);
+}
+
+nav{display:flex;justify-content:space-between;align-items:center;}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:var(--primary);
+text-decoration:none;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-icon{
+width:40px;height:40px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+border-radius:8px;
+display:flex;align-items:center;justify-content:center;
+}
+
+.nav-links{display:flex;gap:30px;list-style:none;}
+
+.nav-links a{
+color:var(--text-secondary);
+text-decoration:none;
+transition:0.3s;
+}
+
+.nav-links a:hover{color:var(--primary);}
+
+.btn{
+padding:12px 24px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#000;
+border:none;
+border-radius:6px;
+font-weight:700;
+cursor:pointer;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+}
+
+.btn:hover{transform:translateY(-2px);}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-top:120px;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.hero h1 span{color:var(--primary);}
+
+.hero p{
+color:var(--text-secondary);
+margin-bottom:30px;
+}
+
+section{padding:100px 0;}
+
+.features,
+.contact{background:var(--bg-card);}
+
+.section-title{text-align:center;margin-bottom:60px;}
+.section-title span{color:var(--primary);}
+
+.features-grid,
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.card{
+background:var(--bg-dark);
+padding:30px;
+border-radius:12px;
+border:1px solid rgba(0,255,136,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:var(--primary);
+}
+
+.stats{
+background:linear-gradient(135deg,rgba(0,255,136,0.05),rgba(0,204,255,0.05));
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:40px;
+text-align:center;
+}
+
+.stat-item h3{
+font-size:48px;
+color:var(--primary);
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:15px;
+background:var(--bg-dark);
+border:1px solid rgba(0,255,136,0.2);
+border-radius:8px;
+color:#fff;
+margin-bottom:20px;
+}
+
+footer{
+padding:40px 0;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.1);
+color:var(--text-secondary);
+}
+
+@media(max-width:768px){
+.nav-links{display:none;}
+.contact-grid{grid-template-columns:1fr;}
+.hero{text-align:center;}
+}
+</style>
 </head>
+
 <body>
-    <canvas class="matrix-bg" id="matrix"></canvas>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <div class="logo-icon">⚡</div>
-                    HACKER.RU
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#features">Возможности</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#stats">Статистика</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-                <a href="#contact" class="btn">Начать</a>
-            </nav>
-        </div>
-    </header>
+<header>
+<div class="container">
+<nav>
+<a href="#" class="logo">
+<div class="logo-icon">⚡</div>
+HACKER.RU
+</a>
+<ul class="nav-links">
+<li><a href="#features">Возможности</a></li>
+<li><a href="#services">Услуги</a></li>
+<li><a href="#stats">Статистика</a></li>
+<li><a href="#contact">Контакты</a></li>
+</ul>
+<a href="#contact" class="btn">Начать</a>
+</nav>
+</div>
+</header>
 
-    <section class="hero">
-        <div class="container">
-            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
-                <div class="hero-content">
-                    <h1>Защита ваших <span>цифровых активов</span> нового поколения</h1>
-                    <p>Профессиональные решения в области кибербезопасности. Пентестинг, аудит безопасности, защита от угроз и мониторинг в реальном времени.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn">Получить консультацию</a>
-                        <a href="#services" class="btn btn-outline">Наши услуги</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-body" id="terminal-content">
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">root@hacker:~$ </span>
-                                <span class="terminal-command">init security_scan --target=all</span>
-                            </div>
-                            <div class="terminal-line terminal-output">[✓] Сканирование портов...</div>
-                            <div class="terminal-line terminal-output">[✓] Анализ уязвимостей...</div>
-                            <div class="terminal-line terminal-output">[✓] Проверка шифрования...</div>
-                            <div class="terminal-line terminal-output">[✓] Мониторинг угроз...</div>
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">root@hacker:~$ </span>
-                                <span class="terminal-command">status --verbose</span>
-                            </div>
-                            <div class="terminal-line terminal-output">Система защищена: 99.97%</div>
-                            <div class="terminal-line terminal-output">Угроз обнаружено: 0</div>
-                            <div class="terminal-line">
-                                <span class="terminal-prompt">root@hacker:~$ </span>
-                                <span class="cursor"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="container">
+<h1>Защита ваших <span>цифровых активов</span></h1>
+<p>Профессиональные решения в области кибербезопасности.</p>
+<a href="#contact" class="btn">Получить консультацию</a>
+</div>
+</section>
 
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Наши <span>преимущества</span></h2>
-                <p>Комплексный подход к безопасности вашего бизнеса с использованием передовых технологий</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Защита от угроз</h3>
-                    <p>Многоуровневая система защиты от кибератак, вирусов и вредоносного ПО в реальном времени.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Аудит безопасности</h3>
-                    <p>Полный анализ инфраструктуры на наличие уязвимостей с детальным отчётом и рекомендациями.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Быстрое реагирование</h3>
-                    <p>Круглосуточный мониторинг и мгновенное реагирование на любые инциденты безопасности.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Шифрование данных</h3>
-                    <p>Передовые алгоритмы шифрования для защиты конфиденциальной информации вашего бизнеса.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📊</div>
-                    <h3>Аналитика и отчёты</h3>
-                    <p>Детальная аналитика угроз и автоматические отчёты о состоянии безопасности системы.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Обучение персонала</h3>
-                    <p>Программы повышения осведомлённости сотрудников о кибербезопасности и фишинге.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: <section class="stats" id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <h3 id="stat1">0</h3>
-                    <p>Защищённых компаний</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3 id="stat2">0</h3>
-                    <p>Отражённых атак</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3 id="stat3">0</h3>
-                    <p>Лет опыта</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3 id="stat4">0</h3>
-                    <p>Сертифицированных экспертов</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="features" id="features">
+<div class="container">
+<div class="section-title">
+<h2>Наши <span>преимущества</span></h2>
+</div>
+<div class="features-grid">
+<div class="card"><h3>Защита</h3><p>Многоуровневая безопасность.</p></div>
+<div class="card"><h3>Аудит</h3><p>Поиск уязвимостей.</p></div>
+<div class="card"><h3>Мониторинг</h3><p>24/7 контроль угроз.</p></div>
+</div>
+</div>
+</section>
 
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Наши <span>услуги</span></h2>
-                <p>Полный спектр услуг по кибербезопасности для бизнеса любого масштаба</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <h3>🔒 Пентестинг</h3>
-                    <p>Тестирование на проникновение для выявления уязвимостей в вашей инфраструктуре</p>
-                    <ul>
-                        <li>Веб-приложения и API</li>
-                        <li>Мобильные приложения</li>
-                        <li>Сетевая инфраструктура</li>
-                        <li>Социальная инженерия</li>
-                    </ul>
-                    <a href="#contact" class="btn">Заказать</a>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>🛡️ Защита от DDoS</h3>
-                    <p>Комплексная защита от распределённых атак на отказ в обслуживании</p>
-                    <ul>
-                        <li>Мониторинг трафика 24/7</li>
-                        <li>Автоматическая фильтрация</li>
-                        <li>Масштабируемая защита</li>
-                        <li>Отчёты об атаках</li>
-                    </ul>
-                    <a href="#contact" class="btn">Заказать</a>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>📋 Compliance</h3>
-                    <p>Соответствие требованиям регуляторов и стандартов безопасности</p>
-                    <ul>
-                        <li>152-ФЗ (Персональные данные)</li>
-                        <li>PCI DSS</li>
-                        <li>ISO 27001</li>
-                        <li>GDPR</li>
-                    </ul>
-                    <a href="#contact" class="btn">Заказать</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="stats" id="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 id="stat1">0</h3><p>Компаний</p></div>
+<div class="stat-item"><h3 id="stat2">0</h3><p>Атак</p></div>
+<div class="stat-item"><h3 id="stat3">0</h3><p>Лет опыта</p></div>
+</div>
+</div>
+</section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Свяжитесь с нами</h3>
-                    <p>Готовы обсудить ваши потребности в области кибербезопасности. Наши эксперты свяжутся с вами в течение 24 часов.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <strong>Email</strong>
-                                <p>security@hacker.ru</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <strong>Телефон</strong>
-                                <p>+7 (495) 123-45-67</p>
-                            </div>
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <strong>Адрес</strong>
-                                <p>Москва, ул. Кибербезопасности, 42</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form fade-in" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" required placeholder="Иван Иванов">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="ivan@company.ru">
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Компания</label>
-                        <input type="text" id="company" name="company" placeholder="Название компании">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Сообщение</label>
-                        <textarea id="message" name="message" required placeholder="Опишите ваши потребности..."></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<section class="contact" id="contact">
+<div class="container">
+<div class="contact-grid">
+<div>
+<h3>Свяжитесь с нами</h3>
+<p>Email: security@hacker.ru</p>
+</div>
+<form class="contact-form">
+<input type="text" placeholder="Ваше имя" required>
+<input type="email" placeholder="Email" required>
+<textarea placeholder="Сообщение" required></textarea>
+<button class="btn">Отправить</button>
+</form>
+</div>
+</div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>HACKER.RU</h4>
-                    <p style="color: var(--text-secondary); font-size: 14px;">Профессиональные решения в области кибербезопасности с 2015 года.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Услуги</h4>
-                    <ul>
-                        <li><a href="#">Пентестинг</a></li>
-                        <li><a href="#">Аудит безопасности</a></li>
-                        <li><a href="#">Защита от DDoS</a></li>
-                        <li><a href="#">Compliance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Компания</h4>
-                    <ul>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Карьера</a></li>
-                        <li><a href="#">Блог</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ресурсы</h4>
-                    <ul>
-                        <li><a href="#">Документация</a></li>
-                        <li><a href="#">API</a></li>
-                        <li><a href="#">Статус системы</a></li>
-                        <li><a href="#">Поддержка</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 HACKER.RU. Все права защищены. | Политика конфиденциальности</p>
-            </div>
-        </div>
-    </footer>
+<footer>
+<p>© 2026 HACKER.RU</p>
+</footer>
 
-    <script>
-        // Matrix rain effect
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
+<script>
+const stats=[
+{id:'stat1',target:500},
+{id:'stat2',target:10000},
+{id:'stat3',target:9}
+];
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+function animateStats(){
+stats.forEach(stat=>{
+let current=0;
+const el=document.getElementById(stat.id);
+const inc=stat.target/100;
+const timer=setInterval(()=>{
+current+=inc;
+if(current>=stat.target){
+current=stat.target;
+clearInterval(timer);
+}
+el.textContent=Math.floor(current);
+},20);
+});
+}
 
-        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-        const charArray = chars.split('');
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
+window.addEventListener("load",animateStats);
+</script>
 
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: ctx.fillStyle = '#00ff88';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 50);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // Terminal typing effect
-        const terminalLines = [
-            '[✓] Сканирование завершено',
-            '[✓] Уязвимостей не найдено',
-            '[✓] Система безопасна',
-            'root@hacker:~$ _'
-        ];
-
-        let lineIndex = 0;
-        const terminalContent = document.getElementById('terminal-content');
-
-        function typeTerminal() {
-            if (lineIndex < terminalLines.length) {
-                const newLine = document.createElement('div');
-                newLine.className = 'terminal-line terminal-output';
-                newLine.textContent = terminalLines[lineIndex];
-                terminalContent.appendChild(newLine);
-                lineIndex++;
-                setTimeout(typeTerminal, 500);
-            }
-        }
-
-        setTimeout(typeTerminal, 2000);
-
-        // Stats counter animation
-        const stats = [
-            { id: 'stat1', target: 500, suffix: '+' },
-            { id: 'stat2', target: 10000, suffix: '+' },
-            { id: 'stat3', target: 9, suffix: '' },
-            { id: 'stat4', target: 50, suffix: '+' }
-        ];
-
-        function animateStats() {
-            stats.forEach(stat => {
-                const element = document.getElementById(stat.id);
-                let current = 0;
-                const increment = stat.target / 100;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= stat.target) {
-                        current = stat.target;
-                        clearInterval(timer);
-                    }
-                    element.textContent = Math.floor(current) + stat.suffix;
-                }, 20);
-            });
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.classList.contains('stats')) {
-                        animateStats();
-                    }
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelector('.stats').classList.add('fade-in');
-
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show success message
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = '✓ Заявка отправлена!';
-            btn.style.background = 'linear-gradient(135deg, #00ff88, #00ccff)';
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                this.reset();
-            }, 3000);
-            
-            console.log('Form submitted:', data);
-        });
-[03.03.2026 18:29] HACKPACK. 🛡VOTREN: // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(10, 10, 15, 0.98)';
-            } else {
-                header.style.background = 'rgba(10, 10, 15, 0.95)';
-            }
-            
-            lastScroll = currentScroll;
-        });
-    </script>
 </body>
 </html>
