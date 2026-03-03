@@ -10,6 +10,7 @@
 <meta property="og:description" content="Профессиональная кибербезопасность нового поколения">
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -19,6 +20,8 @@ background:#0a0a0f;
 color:#fff;
 overflow-x:hidden;
 transition:.3s;
+display:flex;
+flex-direction:column;
 }
 
 body.light{background:#f4f6fa;color:#111}
@@ -40,7 +43,6 @@ transition:.3s;
 header.scrolled{background:rgba(10,10,15,.95)}
 
 .logo{color:#00ff88;font-weight:700;font-size:20px;text-decoration:none}
-
 nav a{color:#aaa;margin:0 15px;text-decoration:none;transition:.3s}
 nav a:hover{color:#00ff88}
 
@@ -130,9 +132,38 @@ display:none;
 .fade{opacity:0;transform:translateY(30px);transition:.6s}
 .fade.show{opacity:1;transform:translateY(0)}
 
+#mapContainer{
+width:100%;
+height:400px;
+margin-top:60px;
+position:relative;
+}
+
+#map{
+width:100%;
+height:100%;
+}
+
+#panel{
+position:absolute;
+right:10px;
+top:10px;
+width:300px;
+height:380px;
+background:rgba(0,0,0,0.85);
+padding:10px;
+overflow:auto;
+border-left:1px solid #00ffcc;
+font-size:12px;
+}
+
+.log{margin-bottom:5px;}
+
 @media(max-width:768px){
 .contact{grid-template-columns:1fr}
 header{padding:15px}
+#panel{position:static;width:100%;height:200px;margin-top:20px;}
+#mapContainer{height:300px;}
 }
 </style>
 </head>
@@ -153,6 +184,17 @@ header{padding:15px}
 <h1>Гибридная <span style="color:#00ff88">кибер-защита</span></h1>
 <p>Корпоративная строгость + киберпанк технологии 2026</p>
 <a href="#contact" class="btn">Связаться</a>
+</section>
+
+<section id="mapContainer">
+<div id="map"></div>
+<div id="panel">
+<h3>LIVE LOG</h3>
+<div id="logs"></div>
+<div class="counter">Атак за сегодня: <span id="attacks">0</span></div>
+<div class="counter">Активных серверов: <span id="servers">87</span></div>
+<div class="counter">Подключений: <span id="connections">0</span></div>
+</div>
 </section>
 
 <section id="features">
@@ -194,25 +236,28 @@ header{padding:15px}
 <button id="topBtn" class="btn">↑</button>
 
 <script>
+/* HEADER & SCROLL */
 const header=document.getElementById("header");
 window.addEventListener("scroll",()=>{
 header.classList.toggle("scrolled",window.scrollY>50);
 document.getElementById("topBtn").style.display=window.scrollY>400?"block":"none";
 });
-
 document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 
+/* THEME */
 document.getElementById("themeBtn").onclick=()=>{
 document.body.classList.toggle("light");
 localStorage.setItem("theme",document.body.classList.contains("light")?"light":"dark");
 };
 if(localStorage.getItem("theme")==="light")document.body.classList.add("light");
 
+/* EMAIL COPY */
 function copyEmail(){
 navigator.clipboard.writeText("packhack1977@gmail.com");
 showToast("Email скопирован");
 }
 
+/* TOAST */
 function showToast(msg){
 const t=document.getElementById("toast");
 t.textContent=msg;
@@ -220,11 +265,11 @@ t.style.display="block";
 setTimeout(()=>t.style.display="none",3000);
 }
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})
-},{threshold:.2});
+/* FADE */
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})},{threshold:.2});
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
+/* COUNTERS */
 const counters=[{id:"c1",target:500},{id:"c2",target:12000},{id:"c3",target:9}];
 let counted=false;
 window.addEventListener("scroll",()=>{
@@ -242,12 +287,86 @@ el.textContent=Math.floor(cur)
 }
 });
 
+/* FORM */
 document.getElementById("form").onsubmit=e=>{
 e.preventDefault();
 if(e.target.honeypot.value!=="")return;
 showToast("Сообщение отправлено!");
 e.target.reset();
 };
+
+/* 3D GLOBE */
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(document.getElementById("map").clientWidth,document.getElementById("map").clientHeight);
+document.getElementById("map").appendChild(renderer.domElement);
+camera.position.z=15;
+
+const globeGeometry=new THREE.SphereGeometry(5,64,64);
+const globeMaterial=new THREE.MeshBasicMaterial({color:0x003344,wireframe:true});
+const globe=new THREE.Mesh(globeGeometry,globeMaterial);
+scene.add(globe);
+
+const pointMaterial=new THREE.MeshBasicMaterial({color:0xff0033});
+function addPoint(){
+const geometry=new THREE.SphereGeometry(0.1,8,8);
+const point=new THREE.Mesh(geometry,pointMaterial);
+const phi=Math.random()*Math.PI;
+const theta=Math.random()*2*Math.PI;
+point.position.x=5*Math.sin(phi)*Math.cos(theta);
+point.position.y=5*Math.sin(phi)*Math.sin(theta);
+point.position.z=5*Math.cos(phi);
+scene.add(point);
+setTimeout(()=>scene.remove(point),2000);
+}
+
+function addAttackLine(){
+const material=new THREE.LineBasicMaterial({color:0xff0000});
+const points=[];
+points.push(new THREE.Vector3((Math.random()-0.5)*10,(Math.random()-0.5)*10,(Math.random()-0.5)*10));
+points.push(new THREE.Vector3((Math.random()-0.5)*10,(Math.random()-0.5)*10,(Math.random()-0.5)*10));
+const geometry=new THREE.BufferGeometry().setFromPoints(points);
+const line=new THREE.Line(geometry,material);
+scene.add(line);
+setTimeout(()=>scene.remove(line),1000);
+}
+
+function animate(){
+requestAnimationFrame(animate);
+globe.rotation.y+=0.0015;
+renderer.render(scene,camera);
+}
+animate();
+
+let attackCount=0,connectionCount=0;
+function randomEvent(){
+addPoint();addAttackLine();
+attackCount+=Math.floor(Math.random()*5)+1;
+connectionCount+=Math.floor(Math.random()*3)+1;
+document.getElementById("attacks").innerText=attackCount;
+document.getElementById("connections").innerText=connectionCount;
+addLog();
+}
+
+const logs=document.getElementById("logs");
+const countries=["USA","Germany","France","Brazil","Japan","India","UK","Canada","Australia"];
+function addLog(){
+const div=document.createElement("div");div.className="log";
+const c1=countries[Math.floor(Math.random()*countries.length)];
+const c2=countries[Math.floor(Math.random()*countries.length)];
+div.innerText=`[${new Date().toLocaleTimeString()}] ATTACK ${c1} -> ${c2}`;
+logs.prepend(div);
+if(logs.children.length>50)logs.removeChild(logs.lastChild);
+}
+
+setInterval(randomEvent,1000);
+
+window.addEventListener("resize",()=>{
+camera.aspect=document.getElementById("map").clientWidth/document.getElementById("map").clientHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(document.getElementById("map").clientWidth,document.getElementById("map").clientHeight);
+});
 </script>
 
 </body>
