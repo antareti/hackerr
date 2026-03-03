@@ -4,160 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HACKER.RU — Cyber Security Solutions</title>
-<meta name="description" content="Современные решения в области кибербезопасности. Пентестинг, аудит, защита бизнеса.">
-<meta property="og:title" content="HACKER.RU">
-<meta property="og:description" content="Профессиональная кибербезопасность нового поколения">
-
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'JetBrains Mono',monospace;
-background:#0a0a0f;
-color:#fff;
-overflow-x:hidden;
-transition:.3s;
-}
-body.light{background:#f4f6fa;color:#111}
-header{
-position:fixed;
-width:100%;
-top:0;
-backdrop-filter:blur(12px);
-background:rgba(10,10,15,.7);
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-transition:.3s;
-}
-header.scrolled{background:rgba(10,10,15,.95)}
-.logo{color:#00ff88;font-weight:700;font-size:20px;text-decoration:none}
-nav a{color:#aaa;margin:0 15px;text-decoration:none;transition:.3s}
+body{font-family:'JetBrains Mono',monospace;background:#0a0a0f;color:#fff;overflow-x:hidden}
+header{position:fixed;width:100%;top:0;background:rgba(10,10,15,.85);padding:15px 40px;display:flex;justify-content:space-between;z-index:1000}
+.logo{color:#00ff88;font-weight:700}
+nav a{color:#aaa;margin:0 15px;text-decoration:none}
 nav a:hover{color:#00ff88}
-.btn{
-background:linear-gradient(135deg,#00ff88,#00ccff);
-border:none;
-padding:10px 20px;
-border-radius:8px;
-cursor:pointer;
-font-weight:700;
-color:#000;
-transition:.3s;
-}
-.btn:hover{transform:translateY(-3px)}
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-flex-direction:column;
-background:linear-gradient(270deg,#00ff8840,#00ccff40,#ff00ff30);
-background-size:600% 600%;
-animation:gradient 15s ease infinite;
-}
-@keyframes gradient{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+.btn{background:linear-gradient(135deg,#00ff88,#00ccff);border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:700;color:#000}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
 section{padding:100px 40px}
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-.card{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(12px);
-padding:30px;
-border-radius:15px;
-border:1px solid rgba(0,255,136,.2);
-transition:.3s;
-}
-.card:hover{transform:translateY(-8px);border-color:#00ff88}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:rgba(255,255,255,.05);padding:30px;border-radius:15px;border:1px solid rgba(0,255,136,.2)}
 .stats{text-align:center}
 .stat h3{font-size:42px;color:#00ff88}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-input,textarea{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border-radius:8px;
-border:1px solid #00ff8840;
-background:rgba(0,0,0,.3);
-color:#fff;
-}
-.toast{
-position:fixed;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-background:#111;
-padding:15px 25px;
-border-radius:10px;
-border:1px solid #00ff88;
-display:none;
-}
-#topBtn{
-position:fixed;
-right:30px;
-bottom:30px;
-display:none;
-}
-.fade{opacity:0;transform:translateY(30px);transition:.6s}
-.fade.show{opacity:1;transform:translateY(0)}
-#map{
-width:100%;
-height:500px;
-margin-top:50px;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 0 20px #00ff88;
-}
-@media(max-width:768px){
-.contact{grid-template-columns:1fr}
-header{padding:15px}
-}
+input,textarea{width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #00ff8840;background:#111;color:#fff}
+#map{width:100%;height:500px;border-radius:15px;overflow:hidden;box-shadow:0 0 30px #00ff88}
+@media(max-width:768px){.contact{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
-<header id="header">
-<a href="#" class="logo">HACKER.RU</a>
+<header>
+<div class="logo">HACKER.RU</div>
 <nav>
 <a href="#features">Возможности</a>
 <a href="#stats">Статистика</a>
 <a href="#contact">Контакты</a>
-<button id="themeBtn" class="btn">Тема</button>
 </nav>
 </header>
 
 <section class="hero">
 <h1>Гибридная <span style="color:#00ff88">кибер-защита</span></h1>
 <p>Корпоративная строгость + киберпанк технологии 2026</p>
-<a href="#contact" class="btn">Связаться</a>
 </section>
 
 <section id="features">
 <div class="grid">
-<div class="card fade"><h3>Пентестинг</h3><p>Глубокий аудит инфраструктуры</p></div>
-<div class="card fade"><h3>DDoS Shield</h3><p>Мгновенная фильтрация атак</p></div>
-<div class="card fade"><h3>Compliance</h3><p>ISO, GDPR, PCI DSS</p></div>
+<div class="card"><h3>Пентестинг</h3><p>Глубокий аудит инфраструктуры</p></div>
+<div class="card"><h3>DDoS Shield</h3><p>Мгновенная фильтрация атак</p></div>
+<div class="card"><h3>Compliance</h3><p>ISO, GDPR, PCI DSS</p></div>
 </div>
 </section>
 
 <section id="map"></section>
 
-<section class="stats" id="stats">
+<section id="stats" class="stats">
 <div class="grid">
-<div class="stat fade"><h3 id="c1">0</h3><p>Компаний</p></div>
-<div class="stat fade"><h3 id="c2">0</h3><p>Атак отражено</p></div>
-<div class="stat fade"><h3 id="c3">0</h3><p>Лет опыта</p></div>
+<div class="stat"><h3 id="c1">0</h3><p>Компаний</p></div>
+<div class="stat"><h3 id="c2">0</h3><p>Атак отражено</p></div>
+<div class="stat"><h3 id="c3">0</h3><p>Лет опыта</p></div>
 </div>
 </section>
 
@@ -165,150 +65,76 @@ header{padding:15px}
 <div class="contact">
 <div>
 <h3>Связь</h3>
-<p>Email: <span id="email">packhack1977@gmail.com</span></p>
-<button class="btn" onclick="copyEmail()">Копировать email</button>
+<p>Email: packhack1977@gmail.com</p>
 </div>
-
-<form id="form">
-<input type="text" name="name" placeholder="Имя" required>
-<input type="email" name="email" placeholder="Email" required>
-<input type="text" name="company" placeholder="Компания">
-<input type="text" name="honeypot" style="display:none">
-<textarea name="message" placeholder="Сообщение" required></textarea>
+<form>
+<input type="text" placeholder="Имя">
+<input type="email" placeholder="Email">
+<textarea placeholder="Сообщение"></textarea>
 <button class="btn">Отправить</button>
 </form>
 </div>
 </section>
 
-<div class="toast" id="toast">Сообщение отправлено!</div>
-<button id="topBtn" class="btn">↑</button>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
 
 <script>
-/* HEADER SCROLL + TOP BUTTON */
-const header=document.getElementById("header");
-window.addEventListener("scroll",()=>{header.classList.toggle("scrolled",window.scrollY>50);document.getElementById("topBtn").style.display=window.scrollY>400?"block":"none"});
-document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+const container=document.getElementById("map");
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(60,container.clientWidth/container.clientHeight,0.1,5000);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setSize(container.clientWidth,container.clientHeight);
+container.appendChild(renderer.domElement);
+camera.position.set(0,0,15);
 
-/* THEME TOGGLE */
-document.getElementById("themeBtn").onclick=()=>{
-document.body.classList.toggle("light");
-localStorage.setItem("theme",document.body.classList.contains("light")?"light":"dark");
-};
-if(localStorage.getItem("theme")==="light")document.body.classList.add("light");
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;
 
-/* COPY EMAIL */
-function copyEmail(){navigator.clipboard.writeText("packhack1977@gmail.com");showToast("Email скопирован");}
+scene.add(new THREE.AmbientLight(0xffffff,0.4));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);
+sun.position.set(5,3,5);
+scene.add(sun);
 
-/* TOAST */
-function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",3000);}
+const loader=new THREE.TextureLoader();
+const earthTexture=loader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+const earth=new THREE.Mesh(
+new THREE.SphereGeometry(5,128,128),
+new THREE.MeshPhongMaterial({map:earthTexture})
+);
+scene.add(earth);
 
-/* FADE IN */
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})},{threshold:.2});
-document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
-
-/* COUNTERS */
-const counters=[{id:"c1",target:500},{id:"c2",target:12000},{id:"c3",target:9}];
-let counted=false;
-window.addEventListener("scroll",()=>{
-if(!counted && window.scrollY>800){counted=true;counters.forEach(c=>{
-let el=document.getElementById(c.id);
-let cur=0,inc=c.target/100;
-let t=setInterval(()=>{cur+=inc;if(cur>=c.target){cur=c.target;clearInterval(t)}el.textContent=Math.floor(cur)},20)
-})}
-});
-
-/* FORM SUBMIT */
-document.getElementById("form").onsubmit=e=>{e.preventDefault();if(e.target.honeypot.value!=="")return;showToast("Сообщение отправлено!");e.target.reset();};
-
-/* 3D GLOBE */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, document.getElementById("map").clientWidth/document.getElementById("map").clientHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-renderer.setSize(document.getElementById("map").clientWidth, document.getElementById("map").clientHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-document.getElementById("map").appendChild(renderer.domElement);
-
-camera.position.z = 15;
-
-/* LIGHT */
-const light = new THREE.PointLight(0xffffff,1.2);
-light.position.set(10,10,10);
-scene.add(light);
-
-/* TEXTURE EARTH */
-const loader = new THREE.TextureLoader();
-const earthTexture = loader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg');
-const globeGeometry = new THREE.SphereGeometry(5,64,64);
-const globeMaterial = new THREE.MeshPhongMaterial({map: earthTexture, shininess:5});
-const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-scene.add(globe);
-
-/* ATMOSPHERE GLOW */
-const atmosphereGeometry = new THREE.SphereGeometry(5.3,64,64);
-const atmosphereMaterial = new THREE.MeshBasicMaterial({color:0x00ffcc, transparent:true, opacity:0.15, side:THREE.BackSide});
-const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-scene.add(atmosphere);
-
-/* STARFIELD */
-const starGeometry = new THREE.BufferGeometry();
-const starVertices = [];
-for(let i=0;i<10000;i++){starVertices.push((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000);}
-starGeometry.setAttribute('position',new THREE.Float32BufferAttribute(starVertices,3));
-const starMaterial = new THREE.PointsMaterial({color:0xffffff});
-const stars = new THREE.Points(starGeometry, starMaterial);
-scene.add(stars);
-
-/* ATTACK POINT */
-function addPoint(){
-const geometry = new THREE.SphereGeometry(0.12,8,8);
-const material = new THREE.MeshBasicMaterial({color:0xff0033});
-const point = new THREE.Mesh(geometry, material);
-const phi = Math.random() * Math.PI;
-const theta = Math.random() * 2 * Math.PI;
-point.position.set(5*Math.sin(phi)*Math.cos(theta),5*Math.sin(phi)*Math.sin(theta),5*Math.cos(phi));
-scene.add(point);
-setTimeout(()=>scene.remove(point),2000);
-}
-
-/* ATTACK ARC */
-function addAttackLine(){
-const material = new THREE.LineBasicMaterial({color:0xff0000});
-const startPhi = Math.random()*Math.PI;
-const startTheta = Math.random()*2*Math.PI;
-const endPhi = Math.random()*Math.PI;
-const endTheta = Math.random()*2*Math.PI;
-const start = new THREE.Vector3(5*Math.sin(startPhi)*Math.cos(startTheta),5*Math.sin(startPhi)*Math.sin(startTheta),5*Math.cos(startPhi));
-const end = new THREE.Vector3(5*Math.sin(endPhi)*Math.cos(endTheta),5*Math.sin(endPhi)*Math.sin(endTheta),5*Math.cos(endPhi));
-const curve = new THREE.QuadraticBezierCurve3(start,start.clone().multiplyScalar(1.5),end);
-const points = curve.getPoints(50);
-const geometry = new THREE.BufferGeometry().setFromPoints(points);
-const line = new THREE.Line(geometry, material);
-scene.add(line);
-setTimeout(()=>scene.remove(line),1500);
-}
-
-/* ANIMATE */
 function animate(){
 requestAnimationFrame(animate);
-globe.rotation.y += 0.0012;
-atmosphere.rotation.y += 0.0012;
-stars.rotation.y += 0.0002;
+earth.rotation.y+=0.001;
+controls.update();
 renderer.render(scene,camera);
 }
 animate();
 
-/* ATTACK EVENTS */
-setInterval(()=>{addPoint();addAttackLine();},1000);
-
-/* RESIZE */
 window.addEventListener("resize",()=>{
-camera.aspect = document.getElementById("map").clientWidth/document.getElementById("map").clientHeight;
+camera.aspect=container.clientWidth/container.clientHeight;
 camera.updateProjectionMatrix();
-renderer.setSize(document.getElementById("map").clientWidth,document.getElementById("map").clientHeight);
+renderer.setSize(container.clientWidth,container.clientHeight);
 });
 
+/* Счётчики */
+let started=false;
+window.addEventListener("scroll",()=>{
+if(!started && window.scrollY>700){
+started=true;
+[{id:"c1",t:500},{id:"c2",t:12000},{id:"c3",t:9}].forEach(c=>{
+let el=document.getElementById(c.id);
+let i=0;
+let interval=setInterval(()=>{
+i+=Math.ceil(c.t/100);
+if(i>=c.t){i=c.t;clearInterval(interval);}
+el.textContent=i;
+},20);
+});
+}
+});
 </script>
+
 </body>
 </html>
