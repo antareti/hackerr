@@ -3,264 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HACKER.RU - Кибербезопасность</title>
+<title>HACKER.RU — Cyber Security Solutions</title>
+
+<meta name="description" content="Современные решения в области кибербезопасности. Пентестинг, аудит, защита бизнеса.">
+<meta property="og:title" content="HACKER.RU">
+<meta property="og:description" content="Профессиональная кибербезопасность нового поколения">
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-:root{
---primary:#00ff88;
---secondary:#00ccff;
---bg-dark:#0a0a0f;
---bg-card:#12121a;
---text-primary:#fff;
---text-secondary:#888899;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:'JetBrains Mono',monospace;
-background:var(--bg-dark);
-color:var(--text-primary);
+background:#0a0a0f;
+color:#fff;
 overflow-x:hidden;
-line-height:1.6;
+transition:.3s;
 }
 
-.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+body.light{background:#f4f6fa;color:#111}
 
 header{
-padding:20px 0;
 position:fixed;
 width:100%;
 top:0;
-z-index:1000;
-background:rgba(10,10,15,0.95);
-border-bottom:1px solid rgba(0,255,136,0.1);
-}
-
-nav{display:flex;justify-content:space-between;align-items:center;}
-
-.logo{
-font-size:24px;
-font-weight:700;
-color:var(--primary);
-text-decoration:none;
+backdrop-filter:blur(12px);
+background:rgba(10,10,15,.7);
+padding:15px 40px;
 display:flex;
+justify-content:space-between;
 align-items:center;
-gap:10px;
+z-index:1000;
+transition:.3s;
 }
 
-.logo-icon{
-width:40px;height:40px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-border-radius:8px;
-display:flex;align-items:center;justify-content:center;
-}
+header.scrolled{background:rgba(10,10,15,.95)}
 
-.nav-links{display:flex;gap:30px;list-style:none;}
+.logo{color:#00ff88;font-weight:700;font-size:20px;text-decoration:none}
 
-.nav-links a{
-color:var(--text-secondary);
-text-decoration:none;
-transition:0.3s;
-}
-
-.nav-links a:hover{color:var(--primary);}
+nav a{color:#aaa;margin:0 15px;text-decoration:none;transition:.3s}
+nav a:hover{color:#00ff88}
 
 .btn{
-padding:12px 24px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:#000;
+background:linear-gradient(135deg,#00ff88,#00ccff);
 border:none;
-border-radius:6px;
-font-weight:700;
+padding:10px 20px;
+border-radius:8px;
 cursor:pointer;
-text-decoration:none;
-display:inline-block;
-transition:0.3s;
+font-weight:700;
+color:#000;
+transition:.3s;
 }
-
-.btn:hover{transform:translateY(-2px);}
+.btn:hover{transform:translateY(-3px)}
 
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
-padding-top:120px;
+justify-content:center;
+text-align:center;
+flex-direction:column;
+background:linear-gradient(270deg,#00ff8840,#00ccff40,#ff00ff30);
+background-size:600% 600%;
+animation:gradient 15s ease infinite;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:20px;
+@keyframes gradient{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-.hero h1 span{color:var(--primary);}
+section{padding:100px 40px}
 
-.hero p{
-color:var(--text-secondary);
-margin-bottom:30px;
-}
-
-section{padding:100px 0;}
-
-.features,
-.contact{background:var(--bg-card);}
-
-.section-title{text-align:center;margin-bottom:60px;}
-.section-title span{color:var(--primary);}
-
-.features-grid,
-.services-grid{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
 .card{
-background:var(--bg-dark);
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(12px);
 padding:30px;
-border-radius:12px;
-border:1px solid rgba(0,255,136,0.1);
-transition:0.3s;
+border-radius:15px;
+border:1px solid rgba(0,255,136,.2);
+transition:.3s;
 }
+.card:hover{transform:translateY(-8px);border-color:#00ff88}
 
-.card:hover{
-transform:translateY(-5px);
-border-color:var(--primary);
-}
+.stats{text-align:center}
 
-.stats{
-background:linear-gradient(135deg,rgba(0,255,136,0.05),rgba(0,204,255,0.05));
-}
+.stat h3{font-size:42px;color:#00ff88}
 
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px;
-text-align:center;
-}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:50px}
 
-.stat-item h3{
-font-size:48px;
-color:var(--primary);
-}
-
-.contact-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-}
-
-.contact-form input,
-.contact-form textarea{
+input,textarea{
 width:100%;
-padding:15px;
-background:var(--bg-dark);
-border:1px solid rgba(0,255,136,0.2);
+padding:12px;
+margin-bottom:15px;
 border-radius:8px;
+border:1px solid #00ff8840;
+background:rgba(0,0,0,.3);
 color:#fff;
-margin-bottom:20px;
 }
 
-footer{
-padding:40px 0;
-text-align:center;
-border-top:1px solid rgba(255,255,255,0.1);
-color:var(--text-secondary);
+.toast{
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+padding:15px 25px;
+border-radius:10px;
+border:1px solid #00ff88;
+display:none;
 }
+
+#topBtn{
+position:fixed;
+right:30px;
+bottom:30px;
+display:none;
+}
+
+.fade{opacity:0;transform:translateY(30px);transition:.6s}
+.fade.show{opacity:1;transform:translateY(0)}
 
 @media(max-width:768px){
-.nav-links{display:none;}
-.contact-grid{grid-template-columns:1fr;}
-.hero{text-align:center;}
+.contact{grid-template-columns:1fr}
+header{padding:15px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="container">
+<header id="header">
+<a href="#" class="logo">HACKER.RU</a>
 <nav>
-<a href="#" class="logo">
-<div class="logo-icon">⚡</div>
-HACKER.RU
-</a>
-<ul class="nav-links">
-<li><a href="#features">Возможности</a></li>
-<li><a href="#services">Услуги</a></li>
-<li><a href="#stats">Статистика</a></li>
-<li><a href="#contact">Контакты</a></li>
-</ul>
-<a href="#contact" class="btn">Начать</a>
+<a href="#features">Возможности</a>
+<a href="#stats">Статистика</a>
+<a href="#contact">Контакты</a>
+<button id="themeBtn" class="btn">Тема</button>
 </nav>
-</div>
 </header>
 
 <section class="hero">
-<div class="container">
-<h1>Защита ваших <span>цифровых активов</span></h1>
-<p>Профессиональные решения в области кибербезопасности.</p>
-<a href="#contact" class="btn">Получить консультацию</a>
+<h1>Гибридная <span style="color:#00ff88">кибер-защита</span></h1>
+<p>Корпоративная строгость + киберпанк технологии 2026</p>
+<a href="#contact" class="btn">Связаться</a>
+</section>
+
+<section id="features">
+<div class="grid">
+<div class="card fade"><h3>Пентестинг</h3><p>Глубокий аудит инфраструктуры</p></div>
+<div class="card fade"><h3>DDoS Shield</h3><p>Мгновенная фильтрация атак</p></div>
+<div class="card fade"><h3>Compliance</h3><p>ISO, GDPR, PCI DSS</p></div>
 </div>
 </section>
 
 <section class="stats" id="stats">
-<div class="container">
-<div class="stats-grid">
-<div class="stat-item"><h3 id="stat1">0</h3><p>Компаний</p></div>
-<div class="stat-item"><h3 id="stat2">0</h3><p>Атак</p></div>
-<div class="stat-item"><h3 id="stat3">0</h3><p>Лет опыта</p></div>
-</div>
+<div class="grid">
+<div class="stat fade"><h3 id="c1">0</h3><p>Компаний</p></div>
+<div class="stat fade"><h3 id="c2">0</h3><p>Атак отражено</p></div>
+<div class="stat fade"><h3 id="c3">0</h3><p>Лет опыта</p></div>
 </div>
 </section>
 
-<section class="contact" id="contact">
-<div class="container">
-<div class="contact-grid">
+<section id="contact">
+<div class="contact">
 <div>
-<h3>Свяжитесь с нами</h3>
-<p>Email: packhack1977@gmail.com</p>
+<h3>Связь</h3>
+<p>Email: <span id="email">packhack1977@gmail.com</span></p>
+<button class="btn" onclick="copyEmail()">Копировать email</button>
 </div>
-<form class="contact-form">
-<input type="text" placeholder="Ваше имя" required>
-<input type="email" placeholder="Email" required>
-<textarea placeholder="Сообщение" required></textarea>
+
+<form id="form">
+<input type="text" name="name" placeholder="Имя" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="company" placeholder="Компания">
+<input type="text" name="honeypot" style="display:none">
+<textarea name="message" placeholder="Сообщение" required></textarea>
 <button class="btn">Отправить</button>
 </form>
 </div>
-</div>
 </section>
 
-<footer>
-<p>© 2026 HACKER.RU</p>
-</footer>
+<div class="toast" id="toast">Сообщение отправлено!</div>
+<button id="topBtn" class="btn">↑</button>
 
 <script>
-const stats=[
-{id:'stat1',target:500},
-{id:'stat2',target:10000},
-{id:'stat3',target:9}
-];
-
-function animateStats(){
-stats.forEach(stat=>{
-let current=0;
-const el=document.getElementById(stat.id);
-const inc=stat.target/100;
-const timer=setInterval(()=>{
-current+=inc;
-if(current>=stat.target){
-current=stat.target;
-clearInterval(timer);
-}
-el.textContent=Math.floor(current);
-},20);
+const header=document.getElementById("header");
+window.addEventListener("scroll",()=>{
+header.classList.toggle("scrolled",window.scrollY>50);
+document.getElementById("topBtn").style.display=window.scrollY>400?"block":"none";
 });
+
+document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+document.getElementById("themeBtn").onclick=()=>{
+document.body.classList.toggle("light");
+localStorage.setItem("theme",document.body.classList.contains("light")?"light":"dark");
+};
+if(localStorage.getItem("theme")==="light")document.body.classList.add("light");
+
+function copyEmail(){
+navigator.clipboard.writeText("packhack1977@gmail.com");
+showToast("Email скопирован");
 }
 
-window.addEventListener("load",animateStats);
+function showToast(msg){
+const t=document.getElementById("toast");
+t.textContent=msg;
+t.style.display="block";
+setTimeout(()=>t.style.display="none",3000);
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})
+},{threshold:.2});
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+const counters=[{id:"c1",target:500},{id:"c2",target:12000},{id:"c3",target:9}];
+let counted=false;
+window.addEventListener("scroll",()=>{
+if(!counted && window.scrollY>800){
+counted=true;
+counters.forEach(c=>{
+let el=document.getElementById(c.id);
+let cur=0,inc=c.target/100;
+let t=setInterval(()=>{
+cur+=inc;
+if(cur>=c.target){cur=c.target;clearInterval(t)}
+el.textContent=Math.floor(cur)
+},20)
+})
+}
+});
+
+document.getElementById("form").onsubmit=e=>{
+e.preventDefault();
+if(e.target.honeypot.value!=="")return;
+showToast("Сообщение отправлено!");
+e.target.reset();
+};
 </script>
 
 </body>
